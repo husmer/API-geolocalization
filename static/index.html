@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Groupie Tracker</title>
+        <link rel="stylesheet" href="static/styles.css">
+    </head>
+    <body class="backgroundImage">
+        <div class="container">
+            <form action="/search" method="GET">
+                <label for="suggestedSearch">
+                    <h4>Search:<datalist> Tag </h4>
+                </label>
+                <div class="text-container">
+                    <input type="text" list="suggestedSearch" name="q" placeholder="Ex: Queen ..." />
+                    <datalist id="suggestedSearch">
+                    {{ range . }}
+                        <option value="{{.Name}}">{{.Name}} - artist/band</option>
+                        {{ range .Members}}
+                            <option value="{{.}}">{{.}} - member</option>
+                        {{end}}
+                        <option value="{{.FirstAlbum}}">{{.FirstAlbum}} - first album date</option>
+                        <option value="{{.CreationDate}}">{{.CreationDate}} - creation date</option>
+                        {{ range $location, $date := .Relations.DatesLocations }}
+                            <option value="{{$location}}">{{$location}} - locations</option>
+                        {{end}}
+                    {{end}}
+                    </datalist>
+                    <input type="submit" value="Search" id="search">
+                </div>
+            </form>
+        </div>
+        <div class="slider-container">
+            <div class="slider">
+                <p>Creation Date From: </p>
+                <output id="rangeCreFrom">1940</output>
+                <input type="range" id="rangeValueCreationFrom" min="1940" max="2022" value="1940" oninput="rangeCreFrom.value = value"/>
+                <p>Creation Date To: </p>
+                <output id="rangeCreTo">2022</output>
+                <input type="range" id="rangeValueCreationTo" min="1940" max="2022" value="2022" oninput="rangeCreTo.value = value"/>
+            </div>
+            <div class="slider">
+                <p>First Album Recorded From: </p>
+                <output id="rangeAlbFrom">1940</output>
+                <input type="range" id="rangeValueAlbumFrom" min="1950" max="2022" value="1940" oninput="rangeAlbFrom.value = value">
+                <p>First Album Recorded To: </p>
+                <output id="rangeAlbTo">2022</output>
+                <input type="range" id="rangeValueAlbumTo" min="1950" max="2022" value="2022" oninput="rangeAlbTo.value = value">
+            </div>
+            <div class="slider">
+                <legend>Nr. of Members:</legend>
+                <div>
+                    <input type="checkbox" id="1" name="nmbr" value="1" />
+                    <label for="1">1</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="2" name="nmbr" value="2" />
+                    <label for="2">2</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="3" name="nmbr" value="3" />
+                    <label for="3">3</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="4" name="nmbr" value="4" />
+                    <label for="4">4</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="5" name="nmbr" value="5" />
+                    <label for="5">5</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="6" name="nmbr" value="6" />
+                    <label for="6">6</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="7" name="nmbr" value="7" />
+                    <label for="7">7</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="8" name="nmbr" value="8" />
+                    <label for="8">8</label>
+                </div>
+            </div>
+            <div class="slider">
+                <form name="linkForm" method="GET" action="">
+                    <label for="locales">Locations:</label>
+                    <select name="locations" id="locations">
+                        <option value="anyLocation">All locations</option>
+                        
+                    </select>
+                </form>
+            </div>
+        </div>
+    
+        <div>
+            <table id="myTable" class="myTable" style="text-align: center;">
+
+            </table>
+        </div>
+    <script src="static/filters.js"></script>
+    </body>
+</html>

@@ -1,0 +1,148 @@
+body {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.backgroundImage {
+    background-image: url("./concert_background.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.938);
+}
+
+.container h1 {
+    font-size: 24px;
+    color: #000000;
+    padding: 10px;
+}
+
+.container p {
+    font-size: 18px;
+    color: #000000;
+    padding: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #6e03c5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.button:hover {
+    background-color: #bc75ce
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+
+table {
+    width: 95%;
+    background: rgba(255, 255, 255, 0.938);
+    border-radius: 5px;
+    margin: auto;
+}
+
+.search-box {
+    width: 600px;
+    background: #fff;
+    margin: 100px auto 0;
+    border-radius: 5px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+input {
+    flex: 1;
+    height: 50x;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+button {
+    background: transparent;
+    border: 0;
+    outline: 0;
+}
+
+button .fa-solid {
+    width: 25px;
+    color: #555;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+::placeholder {
+    color:#555;
+}
+
+.result-box ul {
+    border-top: 1px solid#999;
+    padding: 15px 10px;
+}
+.result-box ul li {
+    list-style: none;
+    border-radius: 3px;
+    padding: 15px 10px;
+    cursor: pointer;
+}
+.result-box ul li:hover{
+    background: #e9f3ff;
+}
+
+.result-box{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+/* Add this section for horizontal layout of slider-container */
+.slider-container {
+    display: flex; /* Use flexbox to make the sliders horizontal */
+    justify-content: center;
+    align-items: center; /* Center sliders vertically */
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.938) !important;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 20px auto; /* Add margin for spacing */
+
+}
+
+/* Add this section for styling the individual sliders */
+.slider {
+margin: 0 10px;
+}

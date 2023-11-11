@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results - Groupie Tracker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <h1>Search Results</h1>
+    
+    {{ if . }}
+    {{ range . }}
+    <table style="text-align: center;">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Members</th>
+            <th>Creation Date</th>
+            <th>First Album</th>
+            <th>Concert Dates</th>
+        </tr>
+        <tr>
+            <td style="width: 15%;"><img src="{{ .Image }}" alt="Band Image" width="250" ></td>
+            <td style="width: 15%;">{{ .Name }}</td>
+            <td style="width: 15%;">
+                {{ range .Members }}
+                    {{ . }}<br>
+                {{ end }}
+            </td>
+            <td style="width: 5%;">{{ .CreationDate }}</td>
+            <td style="width: 10%;">{{ .FirstAlbum }}</td>
+            <td style="width: 25%;">
+                {{ range $location, $date := .Relations.DatesLocations }}
+                    <br>
+                    {{ $location }}<br>
+                    {{ range $date }}
+                        {{ . }}<br>
+                    {{end}}
+                {{end}}
+            </td>
+        </tr>
+    </table>
+    {{end}}
+    {{ else }}
+        <p>No results found.</p>
+    {{ end }}
+</body>
+</html>
