@@ -39,13 +39,31 @@ func SearchArtist(w http.ResponseWriter, r *http.Request) {
 
 	keys := make([]string, len(matchingArtists[0].Relations.DatesLocations))
 
-	fmt.Println("testing")
+	fmt.Println("Testing:")
 	i := 0
 	for k := range matchingArtists[0].Relations.DatesLocations {
 		keys[i] = k
 		i++
 	}
-	helpers.LocationsToCoordinates(keys[0])
+	fmt.Println("printing keys[0]:", keys[0])
+	fmt.Println("printing all keys:", keys)
+	resultLat, resultLong, err := helpers.LocationsToCoordinates("Tokyo") // calling the function
+
+	if err != nil {
+		fmt.Println("Testing expected error:", err)
+	} else {
+		fmt.Println("Expected latitude:", resultLat, "Expected longitude:", resultLong)
+	}
+
+	gotLat, gotLong, err := helpers.LocationsToCoordinates(keys[0]) // calling the function
+
+	if err != nil {
+		fmt.Println("Testing got error:", err)
+	} else {
+		fmt.Println("Real latitude:", gotLat, "Real longitude:", gotLong)
+	}
+
+	// testing end
 
 	// Render the search results template with matchingArtists
 	fp := path.Join("static", "search_results.html")

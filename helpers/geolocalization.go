@@ -36,13 +36,10 @@ func LocationsToCoordinates(locations string) (float32, float32, error) {
 	}
 
 	// extract the latitude and longitude values
-	if len(data.Results) > 0 {
-		lat := float32(data.Results[0].Geometry.Location.Lat)
-		long := float32(data.Results[0].Geometry.Location.Lng)
-		fmt.Printf("Latitude: %f, Longitude: %f\n", lat, long)
-		fmt.Printf("https://www.google.com/maps/search/?api=1&query=%f,%f\n", lat, long)
-		// return lat, long, nil
-	}
+	lat := float32(data.Results[0].Geometry.Location.Lat)
+	long := float32(data.Results[0].Geometry.Location.Lng)
+	// fmt.Printf("Latitude: %f, Longitude: %f\n", lat, long)
+	// fmt.Printf("https://www.google.com/maps/search/?api=1&query=%f,%f\n", lat, long)
 
-	return 0, 0, fmt.Errorf("no results found for the given location")
+	return lat, long, nil
 }
