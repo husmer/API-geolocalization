@@ -2,8 +2,8 @@ package pages
 
 import (
 	"encoding/json"
-	"groupie-tracker-filters/data_structs"
-	"groupie-tracker-filters/helpers"
+	"groupie-tracker-geolocalization/data_structs"
+	"groupie-tracker-geolocalization/helpers"
 	"net/http"
 	"strings"
 )

@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"groupie-tracker-filters/data_structs"
-	"groupie-tracker-filters/helpers"
+	"groupie-tracker-geolocalization/data_structs"
+	"groupie-tracker-geolocalization/helpers"
 )
 
 var artists []data_structs.Artist

@@ -2,8 +2,9 @@ package pages
 
 import (
 	"encoding/json"
-	"groupie-tracker-filters/data_structs"
-	"groupie-tracker-filters/helpers"
+	"fmt"
+	"groupie-tracker-geolocalization/data_structs"
+	"groupie-tracker-geolocalization/helpers"
 	"html/template"
 	"net/http"
 	"path"
@@ -33,6 +34,18 @@ func SearchArtist(w http.ResponseWriter, r *http.Request) {
 
 	// Use the FilterArtists function to filter artists
 	matchingArtists := helpers.FilterArtists(query, apiResponse.ArtistsWithRelations)
+
+	// testing
+
+	keys := make([]string, len(matchingArtists[0].Relations.DatesLocations))
+
+	fmt.Println("testing")
+	i := 0
+	for k := range matchingArtists[0].Relations.DatesLocations {
+		keys[i] = k
+		i++
+	}
+	helpers.LocationsToCoordinates(keys[0])
 
 	// Render the search results template with matchingArtists
 	fp := path.Join("static", "search_results.html")

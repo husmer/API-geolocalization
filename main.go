@@ -26,4 +26,5 @@ func main() {
 		fmt.Printf("Error starting server: %s\n", err)
 		os.Exit(1)
 	}
+
 }

@@ -1,7 +1,7 @@
 package helpers
 
 import (
-	"groupie-tracker-filters/data_structs"
+	"groupie-tracker-geolocalization/data_structs"
 	"strconv"
 	"strings"
 )
