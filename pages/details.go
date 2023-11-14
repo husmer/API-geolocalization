@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"groupie-tracker-geolocalization/data_structs"
-	"html/template"
 	"net/http"
-	"path"
 	"strconv"
 )
 
@@ -40,11 +38,7 @@ func DetailsPageStarter(w http.ResponseWriter, r *http.Request) {
 	// find artist by the id
 	matchingArtist := apiResponse.ArtistsWithRelations[intQuery-1]
 
-	// Render the search results template with matchingArtists
-	fp := path.Join("static", "details.html")
-	tmpl := template.Must(template.ParseFiles(fp))
-
-	if err := tmpl.Execute(w, matchingArtist); err != nil {
+	if err := data_structs.DetailsPage.Execute(w, matchingArtist); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }

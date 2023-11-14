@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/styles.css">
 </head>
-<body>
-    <a href="/">
-        <button class="button">Back to main page</button>
-    </a>
-    <h1>Details</h1>
+<body class="backgroundImage">
+    <div class="header"> 
+        <a href="/">
+            <button class="button">Back to main page</button>
+        </a>
+        <h1>{{.Name}}</h1>
+    </div>
     <section class='band-details'>
+        
         <div class='band-image'><img src='{{.Image}}' alt='{{.Name}}'></div>
         <div class='content-block'>
             <div  class='band-header'>
