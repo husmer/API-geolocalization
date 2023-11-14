@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Details - {{.Name}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <a href="/">
+        <button class="button">Back to main page</button>
+    </a>
+    <h1>Details</h1>
+    <section class='band-details'>
+        <div class='band-image'><img src='{{.Image}}' alt='{{.Name}}'></div>
+        <div class='content-block'>
+            <div  class='band-header'>
+                <h1>Members</h1>
+            </div> 
+            <div class='band-content'>
+                <ul>
+                    {{range .Members}}
+                        <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div> 
+        </div>
+        <div class='content-block'>
+            <div class='band-created'>
+                <div  class='band-header'>
+                    <h1>Created</h1>
+                </div> 
+                <div class='band-content'>
+                    {{.CreationDate}}
+                </div> 
+            </div>
+            <div class='content-block'>
+                <div  class='band-header'>
+                    <h1>First album date</h1>
+                </div> 
+                <div class='band-content'>
+                    {{.FirstAlbum}}
+                </div> 
+            </div>
+        </div>
+        <div class='content-block'>
+            <div  class='band-header'>
+                <h1>Concerts</h1>
+            </div> 
+            <div class='band-content'>
+                <ul>
+                    {{range $location, $date := .Relations.DatesLocations}}
+                        <li class="loc">
+                            {{ $location }}
+                            <ul>
+                                {{range $date}}
+                                <li class="date">{{.}}</li>
+                                {{ end }}
+                            </ul>
+                        </li>
+                    {{end}}
+                </ul>
+            </div> 
+        </div>
+    </section>
+</body>
+</html>

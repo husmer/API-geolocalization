@@ -14,6 +14,7 @@ func main() {
 	fileServer.HandleFunc("/", pages.MainPageStarter)
 	fileServer.HandleFunc("/search", pages.SearchArtist)
 	fileServer.HandleFunc("/database", pages.ParseApiData)
+	fileServer.HandleFunc("/details", pages.DetailsPageStarter)
 
 	fmt.Println("Running server at http://localhost:8080")
 	fmt.Println("...to shut down server, press Ctrl+C")

@@ -13,7 +13,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 <td style="width: 15%";>${item.members.join("<br>")}</td>
                 <td style="width: 5%";>${item.creationDate}</td>
                 <td style="width: 10%";>${item.firstAlbum}</td>
-                <td style="width: 25%";>${formatDatesLocations(item.relations.datesLocations)}</td>
+                <td style="width: 20%";>${formatDatesLocations(item.relations.datesLocations)}</td>
+                <td style="width: 15%;">
+                    <a href="/details?details=${item.id}" class="button">Details</a>
+                </td>
             `;
         });
     }

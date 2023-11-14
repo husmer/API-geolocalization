@@ -6,13 +6,14 @@ import (
 
 var HomePage = template.Must(template.ParseFiles("./static/index.html"))
 var ErrorPage = template.Must(template.ParseFiles("./static/404Error.html"))
+var DetailsPage = template.Must(template.ParseFiles("./static/details.html"))
 
 type Artists struct {
 	Artists []Artist
 }
 
 type Artist struct {
-	ID           int      `json:"id"`
+	Id           int      `json:"id"`
 	Image        string   `json:"image"`
 	Name         string   `json:"name"`
 	Members      []string `json:"members"`

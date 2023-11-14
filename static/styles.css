@@ -92,12 +92,6 @@ input {
     color: #333;
 }
 
-button {
-    background: transparent;
-    border: 0;
-    outline: 0;
-}
-
 button .fa-solid {
     width: 25px;
     color: #555;

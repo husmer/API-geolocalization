@@ -24,7 +24,7 @@ func combineArtistsAndRelations(artists []data_structs.Artist, relations []data_
 	var combinedArtists []data_structs.ArtistWithRelations
 	for _, artist := range artists {
 		// Check if a corresponding relation exists
-		if relation, ok := relationsMap[artist.ID]; ok {
+		if relation, ok := relationsMap[artist.Id]; ok {
 			// Iterate through DatesLocations and format the keys
 			formattedDatesLocations := make(map[string][]string)
 			for key, value := range relation.DatesLocations {
@@ -32,7 +32,7 @@ func combineArtistsAndRelations(artists []data_structs.Artist, relations []data_
 				formattedDatesLocations[formattedKey] = value
 			}
 			combinedArtist := data_structs.ArtistWithRelations{
-				ID:           artist.ID,
+				ID:           artist.Id,
 				Image:        artist.Image,
 				Name:         artist.Name,
 				Members:      artist.Members,

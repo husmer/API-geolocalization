@@ -2,7 +2,6 @@ package pages
 
 import (
 	"encoding/json"
-	"fmt"
 	"groupie-tracker-geolocalization/data_structs"
 	"groupie-tracker-geolocalization/helpers"
 	"html/template"
@@ -35,7 +34,7 @@ func SearchArtist(w http.ResponseWriter, r *http.Request) {
 	// Use the FilterArtists function to filter artists
 	matchingArtists := helpers.FilterArtists(query, apiResponse.ArtistsWithRelations)
 
-	// testing
+	/* testing
 
 	keys := make([]string, len(matchingArtists[0].Relations.DatesLocations))
 
@@ -47,7 +46,7 @@ func SearchArtist(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("printing keys[0]:", keys[0])
 	fmt.Println("printing all keys:", keys)
-	resultLat, resultLong, err := helpers.LocationsToCoordinates("Tokyo") // calling the function
+	resultLat, resultLong, err := helpers.LocationsToCoordinates("new_york-usa") // calling the function
 
 	if err != nil {
 		fmt.Println("Testing expected error:", err)
@@ -63,7 +62,7 @@ func SearchArtist(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Real latitude:", gotLat, "Real longitude:", gotLong)
 	}
 
-	// testing end
+	*/
 
 	// Render the search results template with matchingArtists
 	fp := path.Join("static", "search_results.html")
