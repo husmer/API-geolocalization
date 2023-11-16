@@ -38,8 +38,39 @@ func LocationsToCoordinates(locations string) (float32, float32, error) {
 	// extract the latitude and longitude values
 	lat := float32(data.Results[0].Geometry.Location.Lat)
 	long := float32(data.Results[0].Geometry.Location.Lng)
-	// fmt.Printf("Latitude: %f, Longitude: %f\n", lat, long)
-	// fmt.Printf("https://www.google.com/maps/search/?api=1&query=%f,%f\n", lat, long)
+	fmt.Printf("Latitude: %f, Longitude: %f\n", lat, long)
+	fmt.Printf("https://www.google.com/maps/search/?api=1&query=%f,%f\n", lat, long)
 
 	return lat, long, nil
+}
+
+// add coordinates to the artist
+
+func AddCoordinates(artist *data_structs.ArtistWithRelations) error {
+	// Access artist's Relations and DatesLocations
+	relations := artist.Relations
+	datesLocations := relations.DatesLocations
+
+	// Initialize Coordinates map
+	coordinates := make(map[string][][]float32)
+
+	// Iterate through DatesLocations and populate Coordinates
+	for key := range datesLocations {
+
+		formattedKey := FormatLocationMaps(key)
+
+		// Call your function to get coordinates based on the location value
+		lat, long, err := LocationsToCoordinates(formattedKey)
+		if err != nil {
+			return err
+		}
+
+		// Add coordinates to the map
+		coordinates[formattedKey] = [][]float32{{lat, long}}
+	}
+
+	// Assign the Coordinates map to the artist
+	artist.Coordinates = coordinates
+
+	return nil
 }

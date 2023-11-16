@@ -31,6 +31,10 @@ func combineArtistsAndRelations(artists []data_structs.Artist, relations []data_
 				formattedKey := helpers.FormatLocationText(key)
 				formattedDatesLocations[formattedKey] = value
 			}
+
+			// Get the coordinates using the locations
+			coordinates := make(map[string][][]float32)
+
 			combinedArtist := data_structs.ArtistWithRelations{
 				ID:           artist.Id,
 				Image:        artist.Image,
@@ -44,6 +48,7 @@ func combineArtistsAndRelations(artists []data_structs.Artist, relations []data_
 					ID:             relation.ID,
 					DatesLocations: formattedDatesLocations,
 				},
+				Coordinates: coordinates,
 			}
 			combinedArtists = append(combinedArtists, combinedArtist)
 		}

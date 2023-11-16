@@ -4,14 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Groupie Tracker</title>
+        <link rel="stylesheet" href="static/reset.css">
         <link rel="stylesheet" href="static/styles.css">
     </head>
     <body class="backgroundImage">
         <div class="container">
             <form action="/search" method="GET">
-                <label for="suggestedSearch">
-                    <h4>Search:<datalist> Tag </h4>
-                </label>
                 <div class="text-container">
                     <input type="text" list="suggestedSearch" name="q" placeholder="Ex: Queen ..." />
                     <datalist id="suggestedSearch">

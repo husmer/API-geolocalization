@@ -1,6 +1,9 @@
 package helpers
 
-import "strings"
+import (
+	"regexp"
+	"strings"
+)
 
 func FormatLocationText(original string) string {
 	// auckland-new_zealand --> Auckland - New Zealand
@@ -18,4 +21,31 @@ func FormatLocationText(original string) string {
 		}
 	}
 	return result
+}
+
+/*
+	func FormatLocationMaps(original []string) []string {
+		formattedLocations := make([]string, len(original))
+
+		for i, location := range original {
+			// Remove "-" from the location string
+			locationWithoutDash := strings.ReplaceAll(location, "-", "")
+
+			// Replace spaces with '+' in the formatted string
+			re := regexp.MustCompile(`\s+`)
+			formattedLocations[i] = re.ReplaceAllString(locationWithoutDash, "+")
+		}
+
+		return formattedLocations
+	}
+*/
+func FormatLocationMaps(original string) string {
+
+	locationWithoutDash := strings.ReplaceAll(original, "-", "")
+
+	// Replace spaces with '+' in the formatted string
+	re := regexp.MustCompile(`\s+`)
+	formattedLocation := re.ReplaceAllString(locationWithoutDash, "+")
+
+	return formattedLocation
 }
