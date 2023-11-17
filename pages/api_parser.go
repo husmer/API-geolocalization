@@ -33,7 +33,7 @@ func combineArtistsAndRelations(artists []data_structs.Artist, relations []data_
 			}
 
 			// Get the coordinates using the locations
-			coordinates := make(map[string][][]float32)
+			var coordinates [][]float32
 
 			combinedArtist := data_structs.ArtistWithRelations{
 				ID:           artist.Id,

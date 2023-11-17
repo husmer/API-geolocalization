@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Vina+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
 .body,
 .container h1,
@@ -12,6 +13,12 @@
 .slider
 {
     font-family: 'Vina Sans', sans-serif;
+}
+
+.title-header h1{
+    font-family: 'Rock Salt', cursive, sans-serif;
+    font-size: 50px;
+    margin-right: auto;
 }
 
 .backgroundImage {
@@ -75,10 +82,13 @@ table, th, td {
 
 th {
     font-size: 30px;
+    padding: 1em;
 }
 
 td {
     font-size: 25px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 
@@ -87,6 +97,7 @@ table {
     background: rgba(255, 255, 255, 0.938);
     border-radius: 5px;
     margin: auto;
+    text-align: center;
 }
 
 .search-box {
@@ -168,7 +179,7 @@ margin: 0 10px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    margin: 0 auto;
+    margin: 1em;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -192,6 +203,11 @@ margin: 0 10px;
 
 .band-header {
     text-align: left;
+    font-size: 40px;
+}
+
+.band-content {
+    font-size: 25px;
 }
 
 .band-content ul {
@@ -200,21 +216,46 @@ margin: 0 10px;
 
 .band-content li {
     margin-bottom: 10px;
+    font-size: 25px;
 }
 
 .date {
     list-style-type: none;
 }
 
-.header {
+.title-header {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
     width: auto;
     height: auto;
     background: rgba(255, 255, 255, 0.938);
     margin-bottom: 1em;
+    padding: 1em;
+}
+
+.back-button {
+    margin-left: auto;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 10px;
+    background-color: #6e03c5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.back-button:hover {
+    background-color: #bc75ce
 }
 
 /* Set the size of the div element that contains the map */
 #map {
     height: 400px; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */
+    bottom: 0;
 }

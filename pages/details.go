@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"groupie-tracker-geolocalization/data_structs"
 	"groupie-tracker-geolocalization/helpers"
+	"html/template"
 	"net/http"
 	"strconv"
 )
@@ -12,7 +13,6 @@ import (
 func DetailsPageStarter(w http.ResponseWriter, r *http.Request) {
 	// Get the search query from the URL query parameter "details"
 	query := r.URL.Query().Get("details")
-	fmt.Println(query)
 	intQuery, err := strconv.Atoi(query)
 	if err != nil {
 		fmt.Println("failed strconv.Atoi the user query")
@@ -51,38 +51,21 @@ func DetailsPageStarter(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("Coordinates are:", matchingArtist.Coordinates)
 
-	/*
-			// testing
-			fmt.Println("Testing:")
-			// Iterate over the original keys and store unique ones in the map
-			locationKeys := make(map[string]bool)
+	tmpl, errTmpl := template.New("MapMarkerScript").ParseFiles("./static/details.html")
+	if errTmpl != nil {
+		fmt.Println("errTempl - in formting templ", errTmpl)
+		// Redirect to the error page
+		http.Redirect(w, r, "/error", http.StatusSeeOther)
+		return
+	}
 
-			for k := range matchingArtist.Relations.DatesLocations {
-				locationKeys[k] = true
-			}
-			// A slice to hold the unique keys
-			uniqueKeys := make([]string, 0, len(locationKeys))
-
-			// Populate the keys slice with unique keys from the map
-			for k := range locationKeys {
-				uniqueKeys = append(uniqueKeys, k)
-			}
-
-			//fmt.Println("printing unqiueKeys[0]:", uniqueKeys[0])
-			//fmt.Println("printing all keys:", uniqueKeys)
-			//plusUniqueKeys := helpers.FormatLocationMaps(uniqueKeys)
-			// fmt.Println("printing formatted keys:", plusKey)
-
-			//resultLat, resultLong, err := helpers.LocationsToCoordinates(plusUniqueKeys[0]) // calling the function
-
-
-		if err != nil {
-			fmt.Println("Testing uniqueKeys error:", err)
-		} else {
-			fmt.Println("Expected latitude:", resultLat, "Expected longitude:", resultLong)
-		}*/
-
-	if err := data_structs.DetailsPage.Execute(w, matchingArtist); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+	// if err := data_structs.DetailsPage.Execute(w, matchingArtist); err != nil {
+	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
+	// }
+	errTmpl = tmpl.Execute(w, matchingArtist)
+	if errTmpl != nil {
+		fmt.Println("errTempl", errTmpl)
+		// Redirect to the error page
+		http.Redirect(w, r, "/error", http.StatusSeeOther)
 	}
 }

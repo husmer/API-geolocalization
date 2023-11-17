@@ -51,8 +51,8 @@ func AddCoordinates(artist *data_structs.ArtistWithRelations) error {
 	relations := artist.Relations
 	datesLocations := relations.DatesLocations
 
-	// Initialize Coordinates map
-	coordinates := make(map[string][][]float32)
+	// Initialize Coordinates array
+	var coordinates [][]float32
 
 	// Iterate through DatesLocations and populate Coordinates
 	for key := range datesLocations {
@@ -65,8 +65,8 @@ func AddCoordinates(artist *data_structs.ArtistWithRelations) error {
 			return err
 		}
 
-		// Add coordinates to the map
-		coordinates[formattedKey] = [][]float32{{lat, long}}
+		// Add coordinates to the array
+		coordinates = append(coordinates, []float32{lat, long})
 	}
 
 	// Assign the Coordinates map to the artist
