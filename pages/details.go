@@ -59,9 +59,6 @@ func DetailsPageStarter(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// if err := data_structs.DetailsPage.Execute(w, matchingArtist); err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// }
 	errTmpl = tmpl.Execute(w, matchingArtist)
 	if errTmpl != nil {
 		fmt.Println("errTempl", errTmpl)
