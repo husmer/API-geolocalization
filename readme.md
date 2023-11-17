@@ -15,6 +15,8 @@ Oliver Vilu
 
 2. Runs on http://localhost:8080/
 
+3. Use the search bar to find the artist or just scroll through the database
+
 3. Press the purple "Details" button to get to the map
 
 **Implementation details: algorithm**  
