@@ -1,4 +1,3 @@
-#### Auditing directions: https://github.com/01-edu/public/tree/master/subjects/groupie-tracker/geolocalization/audit #### 
 
 ---  
 
